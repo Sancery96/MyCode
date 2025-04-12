@@ -1,12 +1,9 @@
-import os
 from openai import OpenAI
-from dotenv import load_dotenv
-
-load_dotenv()
+from .. import get_deepseek_api_key, get_deepseek_base_url
 
 if __name__ == "__main__":
-    api_key = os.getenv("DEEPSEEK_API_KEY")
-    base_url = os.getenv("DEEPSEEK_BASE_URL")
+    api_key = get_deepseek_api_key()
+    base_url = get_deepseek_base_url()
     client = OpenAI(api_key=api_key, base_url=base_url)
     response = client.chat.completions.create(
         model="deepseek-chat",
